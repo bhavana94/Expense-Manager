@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Expense Manager</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Enter Details</h2>
+  <form>
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="text" class="form-control" id="amount">
+    </div>
+    <div class="form-group">
+  <label for="type">Choose Transaction</label>
+  <select class="form-control" id="type">
+    <option>Credit</option>
+    <option>Debit</option>
+    </select>
+  </div>
+   <div class="form-group">
+  <label for="comment">Comment</label>
+  <textarea class="form-control" rows="5" id="comment"></textarea>
+</div>
+<input type="submit" class="btn btn-info" value="Submit Button">
+  </form>
+</div>
+
+</body>
+</html>
+
