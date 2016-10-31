@@ -1,13 +1,29 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .models import Account, Category, Transactions
 from .forms import UserForm
 
 # Create your views here.
 
+
 def helloworld(request):
 
     return render(request, 'index.html')
+
+
+def credit(request):
+
+    return render(request, 'credit.html')
+
+
+def debit(request):
+
+    return render(request, 'debit.html')
+
+
+def history(request):
+
+    return render(request, 'history.html')
 
 
 def login_user(request):
@@ -27,6 +43,15 @@ def login_user(request):
             return render(request, 'login.html', {'error_message': 'Invalid Login'})
     else:
         return render(request, 'login.html')
+
+def logout_user(request):
+
+    logout(request)
+    form = UserForm(request.POST or None)
+    context = {
+        "form":form
+    }
+    return render(request, 'login.html', context)
 
 
 def register(request):
