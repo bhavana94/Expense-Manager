@@ -25,7 +25,7 @@ class TimeStamp(models.Model):
 
 class Account(TimeStamp):
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     account_no = models.IntegerField(primary_key=True, blank=True)
     monthly_budget = models.FloatField(blank=True, null=True)
 
