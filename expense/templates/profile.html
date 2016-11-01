@@ -12,19 +12,11 @@
 {{field.error}}
 {% endfor %}
 
-<form action="/expense/profile/" method="post">
+<form  action="/expense/profile/" method="post">
 
 {% csrf_token %}
 <h3>Hello ! {{user}}<br><br>
 {{user.email}}</h3><br><p><mark>Add your monthly budget</mark></p>
-
-<!-- <div class="form-group">
-      <label for="budget">Monthly Budget</label>
-      <input type="text" class="form-control" id="budget">
-
-
-
-</div>-->
 
 {% include 'register_template.html' %}
 
