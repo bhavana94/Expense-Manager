@@ -1,4 +1,4 @@
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, redirect
 from django.http import HttpResponseRedirect
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
@@ -72,7 +72,7 @@ def login_user(request):
             if user.is_active:
                 login(request, user)
                 account = Account.objects.filter(user=request.user)
-                return render(request, 'profile.html')
+                return redirect('/expense/profile/')
             else:
                 return render(request, 'login.html', {'error_message': 'Your account has been disabled'})
         else:
