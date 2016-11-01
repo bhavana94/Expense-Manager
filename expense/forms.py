@@ -18,7 +18,7 @@ class BudgetForm(forms.ModelForm):
 
     class Meta:
         model = Account
-        fields = ['user', 'monthly_budget']
+        fields = ['account_no', 'monthly_budget']
 
 
 class AccountForm(forms.ModelForm):

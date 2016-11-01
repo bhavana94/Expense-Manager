@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Account, Category, Transactions
-from .forms import UserForm, AccountForm
+from .forms import UserForm, AccountForm, BudgetForm
 
 # Create your views here.
 
@@ -41,21 +41,21 @@ def credit(request):
 @csrf_protect
 def profile(request):
 
-    if request.method == "POST":
-        form = UserForm(request.POST, instance=request.user.profile)
+        form = BudgetForm(request.POST or None)
         if form.is_valid():
-            form.save()
-            account = Account.objects.filter(user=request.user)
-            return render(request, 'profile.html', {'account': account})
-    else:
-        user = request.user
-        profile = user.profile
-        form = UserForm(instance=profile)
+            user = form.save(commit=False)
+            account_no = form.cleaned_data['account_no']
+            monthly_budget = form.cleaned_data['monthly_budget']
+            user.save()
+            if user is not None:
+                if user:
+                    return render(request, 'profile.html')
 
-    args = {}
-    args['form'] = form
-    return render(request, 'profile.html', args)
+        context = {
+            "form": form
+        }
 
+        return render(request, 'profile.html', context)
 
 def history(request):
 
