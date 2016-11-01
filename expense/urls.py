@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^register/', views.register, name='register'),
     url(r'^manager/', views.helloworld, name="expense"),
     url(r'^credit/', views.credit, name="credit"),
-    url(r'^debit/', views.debit, name="debit"),
+    url(r'^profile/', views.profile, name="profile"),
     url(r'^history/', views.history, name="history"),
 
 

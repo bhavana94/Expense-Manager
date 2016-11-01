@@ -30,7 +30,9 @@ class Account(TimeStamp):
     monthly_budget = models.FloatField(blank=True, null=True)
 
     def __unicode__(self):
-        return self.account_no
+        return str(self.account_no)
+
+User.profile = property(lambda u: Account.objects.get_or_create(user=u)[0])
 
 
 class Category(TimeStamp):
@@ -59,4 +61,4 @@ class Transactions(TimeStamp):
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
 
     def __unicode__(self):
-        return self.amount
+        return str(self.amount)
