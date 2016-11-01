@@ -43,12 +43,12 @@ def profile(request):
 
         form = BudgetForm(request.POST or None)
         if form.is_valid():
-            user = form.save(commit=False)
+            budget = form.save(commit=False)
             monthly_budget = form.cleaned_data['monthly_budget']
-            user.user = request.user
-            user.save()
-            if user is not None:
-                if user:
+            budget.user = request.user
+            budget.save()
+            if budget is not None:
+                if budget:
                     return render(request, 'profile.html')
 
         context = {
