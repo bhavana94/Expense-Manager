@@ -44,8 +44,8 @@ def profile(request):
         form = BudgetForm(request.POST or None)
         if form.is_valid():
             user = form.save(commit=False)
-            account_no = form.cleaned_data['account_no']
             monthly_budget = form.cleaned_data['monthly_budget']
+            user.user = request.user
             user.save()
             if user is not None:
                 if user:

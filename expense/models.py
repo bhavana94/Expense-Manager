@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+import random
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
@@ -32,7 +32,14 @@ class Account(TimeStamp):
     def __unicode__(self):
         return str(self.account_no)
 
-User.profile = property(lambda u: Account.objects.get_or_create(user=u)[0])
+    def create_awb(self):
+        return random.randrange(10 ** 12)
+
+    def save(self, *args, **kwargs):
+        # check if the row with this AWB already exists.
+        if not self.pk:
+            self.awb = self.create_awb()
+        super(Account, self).save(*args, **kwargs)
 
 
 class Category(TimeStamp):
