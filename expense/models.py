@@ -36,7 +36,7 @@ class Account(TimeStamp):
         return random.randrange(10 ** 12)
 
     def save(self, *args, **kwargs):
-        if not self.pk:
+        if not self.account_no:
             self.account_no = self.create_account_no()
         super(Account, self).save(*args, **kwargs)
 
