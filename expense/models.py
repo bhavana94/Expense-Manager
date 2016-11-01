@@ -36,7 +36,6 @@ class Account(TimeStamp):
         return random.randrange(10 ** 12)
 
     def save(self, *args, **kwargs):
-        # check if the row with this AWB already exists.
         if not self.pk:
             self.account_no = self.create_account_no()
         super(Account, self).save(*args, **kwargs)
